@@ -6,3 +6,6 @@ Project done cuz of learning GIT
 
 # Landing Page Project
 Project done cuz of learning Flexbox
+
+# Rock Paper Scissors
+Project dont cuz of learning DOM
