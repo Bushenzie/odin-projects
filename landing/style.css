@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 body {
-    font-family: 'Roboto', sand-serif;
+    font-family: "Roboto", sand-serif;
     margin: 0;
     padding: 0;
 }
@@ -50,7 +50,7 @@ body {
 /*----------  UNDERHEAD  ----------*/
 
 .underheader {
-    padding: 5% 12.5%;
+    padding: 5% 12.5% 10%;
     display: flex;
     flex-direction: row;
 }
@@ -94,4 +94,42 @@ body {
 
 .left p {
     line-height: 1.5;
+}
+
+
+/*----------  Info  ----------*/
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info h1 {
+    padding: 1.5% 0;
+    font-weight: 700;
+}
+
+.info .items {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 0 12.5%;
+}
+
+.info .item {
+    flex: 1;
+}
+
+.items .placeholder {
+    width: 200px;
+    height: 200px;
+    border: 3px solid #3882F6;
+    border-radius: 10px;
+}
+
+.items p {
+    width: 200px;
+    text-align: center;
 }
