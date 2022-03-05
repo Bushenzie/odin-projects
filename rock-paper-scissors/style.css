@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(0deg,#4D4861,#DE3C4B);
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-text {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.container {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5% 5% 4%;
+    border-radius: 30px;
+}
+
+.container .text {
+    line-height: .5;
+    text-align: center;
+}
+
+.choices {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.choices .item {
+    font-size: 70px;
+    background: none;
+    flex: 1;
+    border: 2px solid#CCC;
+    padding: 45px 30px;
+    border-radius: 30px;
+}
+
+.player-side .choices .item:hover {
+    background-color: #EEE;
+}
+
+.state-manage {
+    margin: 30px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.state-manage .separator {
+    height: 2px;
+    flex: 1 2 100%;
+    background-color: #CCC;
+}
+
+.state-manage .current-state {
+    text-align: center;
+    width: 390px;
+    font-size: 40px;
+    margin: 0 9px;
+}
+
+.container .picked {
+    background-color: #EEE;
+}
+
+.again-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    width: 30%;
+    text-align: center;
+    border-radius: 30px;
+    background: none;
+    border: 2px solid #CCC;
+
+}
+
+.again-button:hover {
+    background-color: #EEE;
+}
+
+.cannot {
+    opacity: .5;
+}
