@@ -67,9 +67,8 @@ body {
 
 .right .placeholder {
     flex-grow: 1;
-    margin-left: 30%;
-    border: 3px solid #3882F6;
-    border-radius: 10px;
+    margin-left: 20%;
+    height: 120%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,6 +88,7 @@ body {
     color: #fff;
     background-color: #3882F6;
     padding: 12px 36px;
+    font-size: 18px;
     border-radius: 10px;
 }
 
@@ -108,6 +108,8 @@ body {
 
 .info h1 {
     padding: 1.5% 0;
+    font-size: 36px;
+    color: #1F2937;
     font-weight: 700;
 }
 
@@ -115,7 +117,7 @@ body {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    padding: 0 12.5%;
+    padding: 0 12.5% 6%;
 }
 
 .info .item {
@@ -131,5 +133,37 @@ body {
 
 .items p {
     width: 200px;
+    color: #1F2937;
     text-align: center;
+}
+
+
+/*----------  quote  ----------*/
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 12.5%;
+    background-color: #E5E7EB;
+}
+
+.text {
+    text-align: left;
+    width: 60%;
+}
+
+.text h1 {
+    margin: 0;
+    font-weight: 100;
+    color: #1F2937;
+    font-style: italic;
+}
+
+.text h4 {
+    align-self: flex-start;
+    color: #1F2937;
+    text-align: right;
+    font-size: 26px;
 }
