@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    background-color: white;
+}
+
+.item:hover {
+    background-color: black;
+}
+
+.clicked {
+    background-color: black;
+}
