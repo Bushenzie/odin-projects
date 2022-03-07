@@ -1,15 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
+    background-image: linear-gradient(180deg,#192BC2,#0E0E52);
+    background-repeat: no-repeat;
+    height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.title {
+    color: #FFF;
+    font-size: 55px;
+    text-shadow:10px 0 #000;
+    align-self: none;
 }
 
 .container {
     border: 1px solid #000;
     display: flex;
     flex-wrap: wrap;
+    margin: 10px;
+    background-color: #fff;
 }
 
 .block {
@@ -24,4 +40,8 @@ body {
 
 .clicked {
     background-color: #000;
+}
+
+#field-select {
+    padding: 5px 20px;
 }

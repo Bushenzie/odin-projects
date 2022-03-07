@@ -1,12 +1,16 @@
-let containerSize = 728;
+let containerSize = 650;
 
 const container = document.createElement("div");
 const select = document.getElementById("field-select");
 
-MakeBorder()
+MakeBorder();
+
 
 select.addEventListener("change", (e) => {
     switch (select.options[select.selectedIndex].value) {
+        case "none":
+            DeleteField();
+            break;
         case "16x16":
             DeleteField()
             MakeField(16, 16);
@@ -38,7 +42,6 @@ function MakeBorder() {
     container.style.height = containerSize + "px";
     document.body.appendChild(container);
 }
-
 
 function MakeField(x, y) {
 
