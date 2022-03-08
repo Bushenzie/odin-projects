@@ -1,5 +1,5 @@
-let containerSize = 650;
-let color = "";
+let containerSize = 512;
+let color = "#000";
 const container = document.createElement("div");
 const select = document.getElementById("field-select");
 const colorPicker = document.getElementById("color-picker");
@@ -31,6 +31,10 @@ select.addEventListener("change", (e) => {
             DeleteField()
             MakeField(64, 64);
             break;
+        case "128x128":
+            DeleteField()
+            MakeField(128, 128);
+            break;
     }
 
 });
@@ -44,7 +48,7 @@ function MakeBorder() {
     container.classList.add("container");
     container.style.width = containerSize + "px";
     container.style.height = containerSize + "px";
-    document.body.appendChild(container);
+    document.querySelector(".field").appendChild(container);
 }
 
 function MakeField(x, y) {

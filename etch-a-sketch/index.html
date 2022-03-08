@@ -11,15 +11,23 @@
 
 <body>
     <h1 class="title">Etch-a-sketch</h1>
-    <input type="color" id="color-picker">
-    <select name="fields" id="field-select">
-        <option value="none" selected>-----</option>
-        <option value="16x16">16x16</option>
-        <option value="24x24">24x24</option>
-        <option value="32x32">32x32</option>
-        <option value="48x48">48x48</option>
-        <option value="64x64">64x64</option>
-    </select>
+    <div class="main">
+        <div class="field">
+
+        </div>
+        <div class="controls">
+            <input type="color" id="color-picker">
+            <select name="fields" id="field-select">
+                <option value="none" selected>RESET</option>
+                <option value="16x16">16x16</option>
+                <option value="24x24">24x24</option>
+                <option value="32x32">32x32</option>
+                <option value="48x48">48x48</option>
+                <option value="64x64">64x64</option>
+                <option value="128x128">128x128</option>
+            </select>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
