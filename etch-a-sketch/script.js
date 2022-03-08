@@ -1,8 +1,8 @@
 let containerSize = 650;
-
+let color = "";
 const container = document.createElement("div");
 const select = document.getElementById("field-select");
-
+const colorPicker = document.getElementById("color-picker");
 MakeBorder();
 
 
@@ -35,6 +35,10 @@ select.addEventListener("change", (e) => {
 
 });
 
+colorPicker.addEventListener("input", (e) => {
+    color = colorPicker.value;
+})
+
 
 function MakeBorder() {
     container.classList.add("container");
@@ -52,10 +56,10 @@ function MakeField(x, y) {
         newEl.style.width = containerSize / x + "px";
         newEl.style.height = containerSize / y + "px";
         newEl.addEventListener("dragover", () => {
-            newEl.classList.add("clicked");
+            newEl.style.backgroundColor = color;
         })
         newEl.addEventListener("click", () => {
-            newEl.classList.add("clicked");
+            newEl.style.backgroundColor = color;
         })
         container.appendChild(newEl);
     }
