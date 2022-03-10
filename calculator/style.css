@@ -1,0 +1,47 @@
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.item {
+    width: 75px;
+    margin: 5px;
+    padding: 25px;
+}
+
+.text{
+    border: 1px solid #000;
+    border-bottom: none;
+    width: 302px;
+    height: 80px;
+    padding: 0 25px;
+}
+
+.input,
+.input-upper {
+    text-align: right;
+}
+
+.selected {
+    background-color: #999;
+}
+
+.calculatorLayout {
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.side {
+    display: flex;
+    flex-direction: column;
+}
