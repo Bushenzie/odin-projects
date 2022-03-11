@@ -1,6 +1,5 @@
 
 //TODO design
-//TODO adding při resultu hází předchozí číslo
 
 
 
@@ -13,10 +12,14 @@ let nums = [], iteration = 0, operator, result;
 let operatorSelected = false, dotInNum = false;
 
 //EventListeners
-
 document.querySelectorAll(".item").forEach(item => {
     if (Number(item.value) <= 9 || Number(item.value) >= 0) {
-        item.addEventListener("click", () => DisplayUpdate(item.value));
+        item.addEventListener("click", () => {
+            if (result && !operator) {
+                AbsoluteClear();
+                DisplayUpdate(item.value);
+            } else DisplayUpdate(item.value);
+        });
     } else if (item.value === ".") {
         item.addEventListener("click", () => {
             if (!display.textContent.includes(".")) {
@@ -43,12 +46,13 @@ document.querySelectorAll(".item").forEach(item => {
                 nums.push(Number(display.textContent));
                 iteration++;
             }
-
             DisplayClear();
         });
     }
 })
 
+
+//Functions
 function DisplayUpdate(value) {
     display.textContent += value;
 }
@@ -59,12 +63,12 @@ function DisplayClear() {
 
 function AbsoluteClear() {
     result = undefined;
-    nums.splice(0, nums.length);
     iteration = 0;
     operator = undefined;
     operatorSelected = false;
     display.textContent = "";
     ResetOperations();
+    ArrayClear();
 }
 
 function Calculate(operator) {
