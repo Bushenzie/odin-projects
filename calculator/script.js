@@ -2,6 +2,8 @@
 //TODO design
 
 
+
+
 //Elements
 const display = document.querySelector(".input");
 
@@ -26,16 +28,24 @@ document.querySelectorAll(".item").forEach(item => {
     }
 })
 
-//Keyboard support
+//Keyboard Support
 document.addEventListener("keydown", (e) => {
     document.querySelectorAll(".item").forEach(item => {
         if (e.key === item.value) {
-            if (e.key === ".") DotEvent(item);
-            else if (e.key === "/" || e.key === "*" || e.key === "+" || e.key === "-") OperatingEvent(item);
-            else if (e.key !== "=") NumbersEvent(item);
-        } else if (e.key.toLowerCase() === "c") DisplayClear();
-        else if (e.key === "Delete") AbsoluteClear();
-        else if (e.key === "Enter") CalculatingEvent();
+            if (e.key === ".") {
+                DotEvent(item);
+            } else if (e.key === "/" || e.key === "*" || e.key === "+" || e.key === "-") {
+                OperatingEvent(item);
+            } else if (e.key !== "=") {
+                NumbersEvent(item);
+            }
+        } else if (e.key.toLowerCase() === "c") {
+            DisplayClear();
+        } else if (e.key === "Delete") {
+            AbsoluteClear();
+        } else if (e.key === "Enter" || e.key === "=") {
+            CalculatingEvent();
+        }
     })
 })
 
