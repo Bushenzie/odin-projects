@@ -1,5 +1,4 @@
 
-//TODO dot fix
 //TODO design
 //TODO adding při resultu hází předchozí číslo
 
@@ -11,17 +10,23 @@ const display = document.querySelector(".input");
 
 //Variables
 let nums = [], iteration = 0, operator, result;
-let operatorSelected = false, oneDotPerNum = false;
+let operatorSelected = false, dotInNum = false;
 
 //EventListeners
 
 document.querySelectorAll(".item").forEach(item => {
-    if (Number(item.value) <= 9 || Number(item.value) >= 0 || item.value === ".") {
+    if (Number(item.value) <= 9 || Number(item.value) >= 0) {
         item.addEventListener("click", () => DisplayUpdate(item.value));
+    } else if (item.value === ".") {
+        item.addEventListener("click", () => {
+            if (!display.textContent.includes(".")) {
+                DisplayUpdate(item.value);
+            }
+        })
     } else if (item.value === "C") {
-        item.addEventListener("click", DisplayClear);
+        item.addEventListener("click", () => DisplayClear());
     } else if (item.value === "AC") {
-        item.addEventListener("click", AbsoluteClear);
+        item.addEventListener("click", () => AbsoluteClear());
     } else if (item.value === "=") {
         item.addEventListener("click", () => {
             if (nums.length === 1 && operator && display.textContent !== "") {
@@ -39,16 +44,10 @@ document.querySelectorAll(".item").forEach(item => {
                 iteration++;
             }
 
-            Debug();
             DisplayClear();
         });
     }
 })
-
-
-function Debug() {
-    console.log(nums);
-}
 
 function DisplayUpdate(value) {
     display.textContent += value;
@@ -66,11 +65,9 @@ function AbsoluteClear() {
     operatorSelected = false;
     display.textContent = "";
     ResetOperations();
-    Debug();
 }
 
 function Calculate(operator) {
-    Debug();
     switch (operator) {
         case "+":
             result = add(nums[0], nums[1]);
