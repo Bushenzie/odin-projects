@@ -2,8 +2,6 @@
 //TODO design
 
 
-
-
 //Elements
 const display = document.querySelector(".input");
 
@@ -14,43 +12,67 @@ let operatorSelected = false, dotInNum = false;
 //EventListeners
 document.querySelectorAll(".item").forEach(item => {
     if (Number(item.value) <= 9 || Number(item.value) >= 0) {
-        item.addEventListener("click", () => {
-            if (result && !operator) {
-                AbsoluteClear();
-                DisplayUpdate(item.value);
-            } else DisplayUpdate(item.value);
-        });
+        item.addEventListener("click", () => NumbersEvent(item));
     } else if (item.value === ".") {
-        item.addEventListener("click", () => {
-            if (!display.textContent.includes(".")) {
-                DisplayUpdate(item.value);
-            }
-        })
+        item.addEventListener("click", () => DotEvent(item))
     } else if (item.value === "C") {
         item.addEventListener("click", () => DisplayClear());
     } else if (item.value === "AC") {
         item.addEventListener("click", () => AbsoluteClear());
     } else if (item.value === "=") {
-        item.addEventListener("click", () => {
-            if (nums.length === 1 && operator && display.textContent !== "") {
-                nums.push(Number(display.textContent));
-                Calculate(operator);
-            } else {
-                Calculate(operator);
-            }
-        });
+        item.addEventListener("click", () => CalculatingEvent());
     } else {
-        item.addEventListener("click", () => {
-            operator = item.value;
-            if (iteration === 0) {
-                nums.push(Number(display.textContent));
-                iteration++;
-            }
-            DisplayClear();
-        });
+        item.addEventListener("click", () => OperatingEvent(item));
     }
 })
 
+//Keyboard support
+document.addEventListener("keydown", (e) => {
+    document.querySelectorAll(".item").forEach(item => {
+        if (e.key === item.value) {
+            if (e.key === ".") DotEvent(item);
+            else if (e.key === "/" || e.key === "*" || e.key === "+" || e.key === "-") OperatingEvent(item);
+            else if (e.key !== "=") NumbersEvent(item);
+        } else if (e.key.toLowerCase() === "c") DisplayClear();
+        else if (e.key === "Delete") AbsoluteClear();
+        else if (e.key === "Enter") CalculatingEvent();
+    })
+})
+
+
+
+
+//Events
+function NumbersEvent(item) {
+    if (result && !operator) {
+        AbsoluteClear();
+        DisplayUpdate(item.value);
+    } else DisplayUpdate(item.value);
+}
+
+function DotEvent(item) {
+    if (!display.textContent.includes(".")) {
+        DisplayUpdate(item.value);
+    }
+}
+
+function OperatingEvent(item) {
+    operator = item.value;
+    if (iteration === 0) {
+        nums.push(Number(display.textContent));
+        iteration++;
+    }
+    DisplayClear();
+}
+
+function CalculatingEvent() {
+    if (nums.length === 1 && operator && display.textContent !== "") {
+        nums.push(Number(display.textContent));
+        Calculate(operator);
+    } else {
+        Calculate(operator);
+    }
+}
 
 //Functions
 function DisplayUpdate(value) {
