@@ -23,6 +23,8 @@ document.querySelectorAll(".item").forEach(item => {
         item.addEventListener("click", () => AbsoluteClear());
     } else if (item.value === "=") {
         item.addEventListener("click", () => CalculatingEvent());
+    } else if (item.value === "back") {
+        item.addEventListener("click", () => RemoveEvent());
     } else {
         item.addEventListener("click", () => OperatingEvent(item));
     }
@@ -47,12 +49,22 @@ document.addEventListener("keydown", (e) => {
             CalculatingEvent();
         }
     })
+    if (e.key === "Backspace") {
+        RemoveEvent();
+    }
 })
 
 
 
 
 //Events
+
+function RemoveEvent() {
+    let newValue = display.textContent.slice(0, -1);
+    DisplayClear();
+    DisplayUpdate(newValue);
+}
+
 function NumbersEvent(item) {
     if (result && !operator) {
         AbsoluteClear();
@@ -62,7 +74,9 @@ function NumbersEvent(item) {
 
 function DotEvent(item) {
     if (!display.textContent.includes(".")) {
-        DisplayUpdate(item.value);
+        if (display.textContent === "") {
+            DisplayUpdate(`0${item.value}`)
+        } else DisplayUpdate(item.value);
     }
 }
 
