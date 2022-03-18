@@ -1,6 +1,6 @@
 
 document.querySelectorAll(".item").forEach(item => {
     item.addEventListener("click", () => {
-        location.href = `${item.childNodes[1].href}`;
+        location.href = `odin-projects/${item.childNodes[1].href}`;
     })
 })
