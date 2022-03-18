@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    font-family: 'Roboto', sans-serif;
+    --color-lightest: #ecfeff;
+    --color-light: #cffafe;
+    --color-regular: #22d3ee;
+    --color-dark: #06b6d4;
+    --color-darkest: #0e7490;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(360deg,var(--color-darkest),var(--color-regular));
+    background-repeat: no-repeat;
+    margin: 0;
+    display: grid;
+    grid-template: 1fr / 1fr;
+}
+
+.container {
+    grid-row: 1 / 2;
+    display: grid;
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 5rem;
+    gap: 1rem;
+    grid-template: repeat(auto-fit,minmax(10rem,20rem)) / repeat(auto-fit,minmax(20rem,1fr));
+    grid-auto-rows: minmax(10rem,20rem);
+    align-items: center;
+}
+
+.item {
+    cursor: pointer;
+    margin: 0 auto;
+    background-color: #FFF;
+    border-left: .5rem solid #a5b4fc;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    border-radius: 1rem;
+    width: 20rem;
+    height: 15rem;
+    box-sizing: border-box;
+    padding: 5% 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item a {
+    color: #000;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.item .icon {
+    font-size: 4rem;
+    color: #000;
+}

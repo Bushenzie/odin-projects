@@ -1,14 +1,7 @@
 # Odin Projects
-This repository is made for projects from "The Odin Project".
 
-## Landing Page Project
-Project made due to learning Flexbox
+This repo is for projects from The Odin Project which teaches Front-end & Full-stack development
 
-## Rock Paper Scissors
-Project made due to learning DOM
- 
-## Etch-a-sketch 
-Project made due to learning more events than "click"
+**NOTE**
+All projects are made just to train and are not meant to be viewed as fully functional projects.
 
-## Calculator
-Project made for fun -> Extremly bad CSS
