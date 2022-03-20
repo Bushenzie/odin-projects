@@ -12,7 +12,7 @@
 
 <body>
     <div class="content">
-        <div class="modal not-visible">
+        <div class="modal">
             <div class="background"></div>
             <div class="content">
                 <div class="top">
@@ -20,14 +20,13 @@
                     <i class="fa-solid fa-x close-button"></i>
                 </div>
                 <form action="">
-                    <label for="name">Book name</label>
-                    <input type="text" name="book-name" id="name" value="Test">
-                    <label for="author">Author</label>
-                    <input type="text" name="author" id="author" value="Test">
-                    <label for="pages">Pages</label>
-                    <input type="number" name="pages" id="pages" value="1">
-                    <label for="status">Have you read it?</label>
-                    <input type="checkbox" name="status" id="status">
+                    <input type="text" name="book-name" id="name" placeholder="Book Name">
+                    <input type="text" name="author" id="author" placeholder="Author">
+                    <input type="number" name="pages" id="pages" placeholder="Page count">
+                    <div class="read">
+                        <label for="status">Have you read it?</label>
+                        <input type="checkbox" name="status" id="status">
+                    </div>
                 </form>
                 <button id="form-add">ADD</button>
             </div>
@@ -39,7 +38,6 @@
                 <p>Library app with objects and localStorage saves!</p>
             </div>
         </div>
-        <hr>
         <div class="lower">
             <table>
                 <thead>

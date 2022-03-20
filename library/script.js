@@ -128,8 +128,10 @@ Object.prototype.Row = function () {
             child.innerHTML = value;
         }
         row.appendChild(child);
+
     }
 
+    let tableData = document.createElement("td");
     let deleteButton = document.createElement("i");
     deleteButton.classList.add("fa-solid");
     deleteButton.classList.add("fa-x");
@@ -137,8 +139,8 @@ Object.prototype.Row = function () {
     deleteButton.addEventListener("click", () => {
 
     })
-
-    row.appendChild(deleteButton);
+    tableData.appendChild(deleteButton);
+    row.appendChild(tableData);
     AddTableRow(row);
 }
 
