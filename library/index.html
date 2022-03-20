@@ -5,11 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ee69f69477.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
 
 <body>
+    <div class="content">
+        <div class="modal not-visible">
+            <div class="background"></div>
+            <div class="content">
+                <div class="top">
+                    <h1>Add book</h1>
+                    <i class="fa-solid fa-x close-button"></i>
+                </div>
+                <form action="">
+                    <label for="name">Book name</label>
+                    <input type="text" name="book-name" id="name" value="Test">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" value="Test">
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages" value="1">
+                    <label for="status">Have you read it?</label>
+                    <input type="checkbox" name="status" id="status">
+                </form>
+                <button id="form-add">ADD</button>
+            </div>
+        </div>
+        <i class="fa-solid fa-plus add-button"></i>
+        <div class="upper">
+            <div class="text">
+                <h1>Library</h1>
+                <p>Library app with objects and localStorage saves!</p>
+            </div>
+        </div>
+        <hr>
+        <div class="lower">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Book</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read Status</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
