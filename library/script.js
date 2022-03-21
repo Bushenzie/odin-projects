@@ -1,15 +1,3 @@
-"use strict";
-
-//TODO - DELETE Functionality - ve prostřed pak přepisuje
-//TODO - Celkově rework add func
-
-
-
-
-
-
-setBasic();
-
 
 //DOM Elements
 const addButton = document.querySelector(".add-button");
@@ -30,17 +18,8 @@ const buttonInput = document.querySelector("#form-add");
 //Table
 const tableBody = document.querySelector("tbody");
 
-//Adding event
-buttonInput.addEventListener("click", () => {
-    let book = new Book(Number(localStorage.getItem("x")) + 1, bookInput.value, authorInput.value, pagesInput.value, statusInput.checked);
-    book.Save();
-    book.Row();
-})
-
 //Clearing Event
 clearButton.addEventListener("click", Clear);
-
-
 
 
 //Modal Events
@@ -56,60 +35,46 @@ addButton.addEventListener("click", () => {
     modal.classList.remove("not-visible");
 })
 
+buttonInput.addEventListener("click", () => {
+    let book = new Book(GetBooks().length + 1, bookInput.value, authorInput.value, pagesInput.value, statusInput.checked);
+    book.Save();
+    book.Row();
+})
 
-//Book functionality
 
-function setBasic() {
-    if (!localStorage.x) {
-        localStorage.setItem("x", 0);
-        localStorage.setItem
-    } else {
-        localStorage.setItem("x", localStorage.x)
+//BOOK FUNCTIONALITY
+class Book {
+    constructor(id, name, author, pages, status) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
     }
-}
 
-function Load() {
-    for (let i = 0; i <= localStorage.getItem("x"); i++) {
-        let obj = JSON.parse(localStorage.getItem(i));
-        if (obj) {
-            obj.Row();
-        }
+    Remove() {
+        let books = JSON.parse(localStorage.getItem("library"));
+        books.splice(books.indexOf(this), 1);
+        console.log(books);
+        localStorage.setItem("library", JSON.stringify(books));
     }
-}
 
-function Clear() {
-    localStorage.clear();
-    location.reload();
-}
+    Save() {
+        let books = JSON.parse(localStorage.getItem("library"));
+        books.push(this);
+        console.log(books);
+        localStorage.setItem("library", JSON.stringify(books));
+    }
 
-function AddTableRow(row) {
-    modal.classList.add("not-visible");
-    tableBody.appendChild(row);
-}
-
-function DeleteTableRow(id) {
-    document.getElementById(id).remove();
-}
-
-
-function Book(id, name, author, pages, status) {
-    this.id = id;
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
 }
 
 
 Object.prototype.Remove = function () {
-    localStorage.removeItem(this["id"] - 1);
-    localStorage.setItem("x", Number(localStorage.getItem("x")) - 1);
+    let books = JSON.parse(localStorage.getItem("library"));
+    books.splice(books.indexOf(this), 1);
+    localStorage.setItem("library", JSON.stringify(books));
 }
 
-Object.prototype.Save = function () {
-    localStorage.setItem(localStorage.getItem("x"), JSON.stringify(this));
-    localStorage.setItem("x", Number(localStorage.getItem("x")) + 1);
-}
 
 Object.prototype.Row = function () {
     let row = document.createElement("tr");
@@ -117,15 +82,17 @@ Object.prototype.Row = function () {
     for (let value of Object.values(this)) {
         let child = document.createElement("td");
 
-        //CHECKBOX
+        //IF CHECKBOX
         if (value === true || value === false) {
             let checkbox = document.createElement("input");
             checkbox.setAttribute("type", "checkbox");
-            if (value === true) {
-                checkbox.checked = true;
-            } else {
-                checkbox.checked = false;
-            }
+
+            //Set checked
+            if (value) checkbox.checked = true;
+            else checkbox.checked = false;
+
+
+
             checkbox.addEventListener("click", () => {
                 let num = (this["id"] - 1);
                 let object = JSON.parse(localStorage.getItem(num));
@@ -138,14 +105,15 @@ Object.prototype.Row = function () {
                     localStorage.setItem(num, JSON.stringify(object));
                 }
             })
+
             child.appendChild(checkbox);
         } else {
             child.innerHTML = value;
         }
         row.appendChild(child);
-
     }
 
+    //DELETE BUTTON 
     let tableData = document.createElement("td");
     let deleteButton = document.createElement("i");
     deleteButton.classList.add("fa-solid");
@@ -154,12 +122,50 @@ Object.prototype.Row = function () {
     deleteButton.addEventListener("click", () => {
         DeleteTableRow(this["id"]);
         this.Remove();
+        location.reload();
     })
+
     tableData.appendChild(deleteButton);
     row.appendChild(tableData);
     AddTableRow(row);
 }
 
-if (localStorage.length > 1) {
-    Load();
+class Library {
+    constructor() {
+        this.books = [];
+    }
+
+}
+
+
+//FUNCTIONS
+
+function GetBooks() {
+    let books = JSON.parse(localStorage.getItem("library"));
+    return books;
+}
+
+function Clear() {
+    localStorage.clear();
+    location.reload();
+}
+
+function AddTableRow(row) {
+    modal.classList.add("not-visible");
+    tableBody.appendChild(row);
+}
+
+function DeleteTableRow(row) {
+    document.getElementById(row).remove();
+}
+
+
+let lib;
+if (!localStorage.getItem("library")) {
+    lib = new Library();
+    localStorage.setItem("library", JSON.stringify(lib.books));
+} else {
+    JSON.parse(localStorage.getItem("library")).forEach(book => {
+        book.Row();
+    })
 }
