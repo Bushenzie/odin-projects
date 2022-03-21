@@ -1,7 +1,8 @@
 "use strict";
 
-//TODO - DELETE ROWS
-//TODO - STYLE (modals,site)
+//TODO - DELETE Functionality - ve prostřed pak přepisuje
+//TODO - Celkově rework add func
+
 
 
 
@@ -9,12 +10,12 @@
 
 setBasic();
 
-//Vars
-
 
 //DOM Elements
 const addButton = document.querySelector(".add-button");
 const closeButton = document.querySelector(".close-button");
+const clearButton = document.querySelector(".clear-button");
+
 
 const modalBack = document.querySelector(".background");
 const modal = document.querySelector(".modal");
@@ -29,14 +30,15 @@ const buttonInput = document.querySelector("#form-add");
 //Table
 const tableBody = document.querySelector("tbody");
 
-
+//Adding event
 buttonInput.addEventListener("click", () => {
     let book = new Book(Number(localStorage.getItem("x")) + 1, bookInput.value, authorInput.value, pagesInput.value, statusInput.checked);
     book.Save();
     book.Row();
 })
 
-
+//Clearing Event
+clearButton.addEventListener("click", Clear);
 
 
 
@@ -60,25 +62,33 @@ addButton.addEventListener("click", () => {
 function setBasic() {
     if (!localStorage.x) {
         localStorage.setItem("x", 0);
+        localStorage.setItem
     } else {
         localStorage.setItem("x", localStorage.x)
     }
 }
 
 function Load() {
-    for (let i = 0; i < localStorage.length - 1; i++) {
+    for (let i = 0; i <= localStorage.getItem("x"); i++) {
         let obj = JSON.parse(localStorage.getItem(i));
-        obj.Row();
+        if (obj) {
+            obj.Row();
+        }
     }
 }
 
 function Clear() {
     localStorage.clear();
+    location.reload();
 }
 
 function AddTableRow(row) {
     modal.classList.add("not-visible");
     tableBody.appendChild(row);
+}
+
+function DeleteTableRow(id) {
+    document.getElementById(id).remove();
 }
 
 
@@ -90,6 +100,11 @@ function Book(id, name, author, pages, status) {
     this.status = status;
 }
 
+
+Object.prototype.Remove = function () {
+    localStorage.removeItem(this["id"] - 1);
+    localStorage.setItem("x", Number(localStorage.getItem("x")) - 1);
+}
 
 Object.prototype.Save = function () {
     localStorage.setItem(localStorage.getItem("x"), JSON.stringify(this));
@@ -137,7 +152,8 @@ Object.prototype.Row = function () {
     deleteButton.classList.add("fa-x");
 
     deleteButton.addEventListener("click", () => {
-
+        DeleteTableRow(this["id"]);
+        this.Remove();
     })
     tableData.appendChild(deleteButton);
     row.appendChild(tableData);

@@ -10,11 +10,16 @@ body {
 }
 
 .add-button {
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: 0;
     padding: 1rem;
     font-size: 4rem;
+}
+
+.add-button:hover {
+    color: #111;
 }
 
 
@@ -76,13 +81,10 @@ body {
     transform: scale(1.5);
 }
 
-#form-add {
+.btn {
     cursor: pointer;
-    display: block;
-    margin: 1rem auto .5rem;
     color: #FFF;
     border: none;
-    width: 100%;
     border-radius: 2rem;
     font-size: 1.2rem;
     font-weight: 600;
@@ -90,7 +92,17 @@ body {
     padding: 1rem 2rem;
 }
 
-#form-add:hover {
+.clear-button {
+    margin-bottom: 1rem;
+}
+
+#form-add {
+    display: block;
+    margin: 1rem auto .5rem;
+    width: 100%;
+}
+
+.btn:hover {
     background-color: #334155;
 }
 
@@ -118,6 +130,7 @@ body {
 
 table {
     border-spacing: 0;
+    width: 80%;
 }
 
 table tr,
