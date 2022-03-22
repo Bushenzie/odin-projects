@@ -52,15 +52,8 @@ class Book {
         this.status = status;
     }
 
-    Remove() {
-        let books = JSON.parse(localStorage.getItem("library"));
-        books.splice(books.indexOf(this), 1);
-        console.log(books);
-        localStorage.setItem("library", JSON.stringify(books));
-    }
-
     Save() {
-        let books = JSON.parse(localStorage.getItem("library"));
+        let books = GetBooks();
         books.push(this);
         console.log(books);
         localStorage.setItem("library", JSON.stringify(books));
@@ -71,7 +64,10 @@ class Book {
 
 Object.prototype.Remove = function () {
     let books = JSON.parse(localStorage.getItem("library"));
-    books.splice(books.indexOf(this), 1);
+    let obj = this;
+    let index = books.findIndex(item => item.id === obj.id);
+
+    books.splice(index, 1);
     localStorage.setItem("library", JSON.stringify(books));
 }
 
@@ -80,6 +76,7 @@ Object.prototype.Row = function () {
     let row = document.createElement("tr");
     row.setAttribute("id", this["id"])
     for (let value of Object.values(this)) {
+        if (this["id"] === value) continue;
         let child = document.createElement("td");
 
         //IF CHECKBOX
@@ -94,15 +91,20 @@ Object.prototype.Row = function () {
 
 
             checkbox.addEventListener("click", () => {
-                let num = (this["id"] - 1);
-                let object = JSON.parse(localStorage.getItem(num));
+                let books = GetBooks();
+                let obj = this;
+                let index = books.findIndex(item => item.id === obj.id);
+
+                books.splice(index, 1);
                 if (checkbox.checked) {
-                    object.status = true;
-                    localStorage.setItem(num, JSON.stringify(object));
+                    obj.status = true;
+                    books.splice(index, 0, obj);
+                    localStorage.setItem("library", JSON.stringify(books));
 
                 } else {
-                    object.status = false;
-                    localStorage.setItem(num, JSON.stringify(object));
+                    obj.status = false;
+                    books.splice(index, 0, obj);
+                    localStorage.setItem("library", JSON.stringify(books));
                 }
             })
 
@@ -122,7 +124,7 @@ Object.prototype.Row = function () {
     deleteButton.addEventListener("click", () => {
         DeleteTableRow(this["id"]);
         this.Remove();
-        location.reload();
+        //location.reload();
     })
 
     tableData.appendChild(deleteButton);
