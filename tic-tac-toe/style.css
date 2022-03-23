@@ -35,7 +35,7 @@ h1 {
 }
 
 h6 {
-    margin: 0 0 1rem;
+    margin: 1rem 0 1rem;
     font-size: 3rem;
     color: #FFF;
     text-shadow: 2px 2px 0 var(--darkest-color);
@@ -46,6 +46,7 @@ h6 {
 }
 
 .playingBoard {
+    position:absolute;
     height: 20rem;
     width: 20rem;
     padding: 2.5rem;
@@ -88,7 +89,7 @@ h6 {
 }
 
 #reset-button {
-    margin-top: 2rem;
+    margin-top: 30rem;
     background-color: #FFF;
     padding: 1.5rem 2.5rem;
     box-shadow: 3px 3px 0 var(--darkest-color);

@@ -45,6 +45,7 @@ let board = (function () {
             field[i] = "-";
         }
         showWinner.textContent = "";
+        isEnd = false;
         turn = 0;
     }
 
@@ -74,22 +75,27 @@ let board = (function () {
         ]
         let i = 0;
         let winner = "";
-        while (i <= 2) {
-            //ROWS
-            if (rows[i].every(el => el === "X")) { isEnd = true; winner = "X" }
-            else if (rows[i].every(el => el === "O")) { isEnd = true; winner = "O" }
-            //COLUMNS 
-            if (columns[i].every(el => el === "X")) { isEnd = true; winner = "X" }
-            else if (columns[i].every(el => el === "O")) { isEnd = true; winner = "O" }
-            //CROSS
-            if (i < 2) {
-                if (cross[i].every(el => el === "X")) { isEnd = true; winner = "X" }
-                else if (cross[i].every(el => el === "O")) { isEnd = true; winner = "O" }
+        if (field.find(el => el === "-")) {
+            while (i <= 2) {
+                //ROWS
+                if (rows[i].every(el => el === "X")) { isEnd = true; winner = "X" }
+                else if (rows[i].every(el => el === "O")) { isEnd = true; winner = "O" }
+                //COLUMNS 
+                if (columns[i].every(el => el === "X")) { isEnd = true; winner = "X" }
+                else if (columns[i].every(el => el === "O")) { isEnd = true; winner = "O" }
+                //CROSS
+                if (i < 2) {
+                    if (cross[i].every(el => el === "X")) { isEnd = true; winner = "X" }
+                    else if (cross[i].every(el => el === "O")) { isEnd = true; winner = "O" }
+                }
+                i++;
             }
-            i++;
-        }
-        if (isEnd) {
-            showWinner.textContent = winner;
+            if (isEnd) {
+                showWinner.textContent = `Congratulations, player ${winner}!`;
+            }
+        } else {
+            isEnd = true;
+            showWinner.textContent = "It's a tie :/";
         }
     }
 
