@@ -41,6 +41,14 @@ h6 {
     text-shadow: 2px 2px 0 var(--darkest-color);
 }
 
+h2 {
+    position: absolute;
+    top: 0;
+    right: 10rem;
+    color: #FFF;
+    text-shadow: 2px 2px 0 var(--darkest-color);
+}
+
 #winner {
     text-decoration: underline;
 }

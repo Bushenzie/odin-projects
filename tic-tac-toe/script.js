@@ -11,6 +11,7 @@ const Player = function (id, symbol) {
 
 let playerOne = Player(0, "X");
 let playerTwo = Player(1, "O");
+let firstInvoke = true;
 let turn = 0;
 const players = [playerOne, playerTwo];
 
@@ -18,9 +19,21 @@ const players = [playerOne, playerTwo];
 let board = (function () {
 
     let isEnd = false;
+    let currentTurn;
     const showWinner = document.querySelector("#winner");
+    const showTurn = document.querySelector("#turn");
     const field = ["-", "-", "-", "-", "-", "-", "-", "-", "-",]
 
+
+    const setCurrentTurn = function () {
+        if (firstInvoke) {
+            currentTurn = players[0].symbol;
+            firstInvoke = false;
+        } else {
+            currentTurn = players[(turn + 1) % 2].symbol
+        };
+        showTurn.textContent = currentTurn;
+    }
 
     const makeBoard = function () {
         let grid = "abcdefghi", button;
@@ -51,6 +64,7 @@ let board = (function () {
 
     const point = function () {
         if (!this.textContent && !isEnd) {
+            setCurrentTurn();
             this.textContent = players[turn % 2].symbol;
             field[this.id] = players[turn % 2].symbol;
             turn++;
@@ -103,8 +117,10 @@ let board = (function () {
         field,
         makeBoard,
         deleteBoard,
-        reset
+        reset,
+        setCurrentTurn
     }
 })();
 
 board.makeBoard();
+board.setCurrentTurn();
