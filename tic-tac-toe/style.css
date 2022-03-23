@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+
+:root {
+    --lightest-color: #fdf2f8;
+    --light-color: #fce7f3;
+    --regular-color: #f9a8d4;
+    --regular-darker-color: #f472b6;
+    --darker-color: #db2777;
+    --darkest-color: #9d174d;
+}
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(180deg,var(--regular-darker-color),var(--regular-color));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    position: absolute;
+    top: 2rem;
+    font-size: 5rem;
+    color: #FFF;
+    text-shadow: 3px 3px 0 var(--darkest-color);
+}
+
+h6 {
+    margin: 0 0 1rem;
+    font-size: 3rem;
+    color: #FFF;
+    text-shadow: 2px 2px 0 var(--darkest-color);
+}
+
+#winner {
+    text-decoration: underline;
+}
+
+.playingBoard {
+    height: 20rem;
+    width: 20rem;
+    padding: 2.5rem;
+    border-radius: 3rem;
+    background-color: #FFF;
+    box-shadow: 3px 3px 0 var(--darkest-color);
+}
+
+.buttons {
+    display: grid;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+    grid-template-areas: "a b c"
+                         "d e f"
+                         "g h i";
+}
+
+.buttons button {
+    box-shadow: 4px 4px 0 var(--darkest-color);
+    border: none;
+    border-left: 1px solid var(--darkest-color);
+    border-top: 1px solid var(--darkest-color);
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    font-weight: 700;
+    background: none;
+    border-radius: 1rem;
+
+    padding: 0;
+}
+
+.buttons button:hover {
+    background-color: var(--lightest-color);
+    box-shadow: 2px 2px 0 var(--darkest-color);
+}
+
+#reset-button {
+    margin-top: 2rem;
+    background-color: #FFF;
+    padding: 1.5rem 2.5rem;
+    box-shadow: 3px 3px 0 var(--darkest-color);
+    border-radius: 3rem;
+    border: none;
+}
+
+#reset-button:hover {
+    box-shadow: 1px 1px 0 var(--darkest-color);
+    background-color: var(--lightest-color);
+    cursor: pointer;
+}
