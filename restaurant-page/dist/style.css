@@ -38,11 +38,12 @@ body {
 }
 
 .nav {
+    box-shadow: 0 0 1rem rgba(0,0,0,0.7);
     z-index: 1;
     grid-column: span 3;
     grid-row: 1 / 2;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     background-color: #3A3845;
 }
@@ -52,14 +53,18 @@ body {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin-right: 5rem;
     gap: 2rem;
+    position: relative;
+    right: 2.5%;
     padding: 0;
 }
 
 .nav li {
     color: #FFF;
     display: flex;
+    font-size: 1.25rem;
+    font-weight: 100;
+    text-transform: uppercase;
     justify-content: center;
     padding: 1rem 1rem;
     margin: 0;
@@ -73,19 +78,36 @@ body {
     background-color: #27252e;
 }
 
+.logo {
+    text-shadow: .2rem .2rem 0 #000;
+    font-size: 2rem;
+    color: #FFF;
+    font-weight: 100;
+    position: relative;
+    left: 3%;
+}
+
 
 .main {
-    height: 75%;
+    height: 55%;
     z-index: 1;
     color: #FFF;
     background-color: #3A3845;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.7);
     padding: 3% 5%;
     border-radius: 2rem;
-    margin: 5% 0;
+    margin: 5% 0 0;
     grid-row: 2 / 3;
     grid-column: 2 / 3;
 }
 
+h1 {
+    text-align: center;
+    font-weight: 500;
+}
+
 .text {
+    font-weight: 100;
+    font-size: 1.25rem;
     line-height: 1.5;
 }
