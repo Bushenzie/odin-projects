@@ -26,22 +26,31 @@ export function loadContactpage() {
 
     //Form
     let form = CreateForm();
-    contact.appendChild(form);
+    formDiv.appendChild(form);
+    contact.appendChild(formDiv);
+
+
+
 
     //Opening hours element
-    let cont = document.createElement("div");
-    cont.classList.add("hours");
+    let hoursDiv = document.createElement("div");
+    hoursDiv.classList.add("hours");
 
     //Opening Hours heading 
     let hoursHead = document.createElement("h2");
     hoursHead.textContent = "Opening Hours";
-    cont.appendChild(hoursHead);
+    hoursDiv.appendChild(hoursHead);
 
+    //Days
+    hoursDiv.appendChild(CreateOpeningHour("Monday", 8, 21, false));
+    hoursDiv.appendChild(CreateOpeningHour("Tuesday", 8, 21, false));
+    hoursDiv.appendChild(CreateOpeningHour("Wednesday", 9, 21, false));
+    hoursDiv.appendChild(CreateOpeningHour("Thrusday", 8, 21, false));
+    hoursDiv.appendChild(CreateOpeningHour("Friday", 8, 22, false));
+    hoursDiv.appendChild(CreateOpeningHour("Sunday", 10, 20, false));
+    hoursDiv.appendChild(CreateOpeningHour("Saturday", "", "", true));
 
-
-
-
-
+    contact.appendChild(hoursDiv);
 
 
     elements.push(contact);
@@ -102,6 +111,15 @@ function CreateFormItem(el, type, name, id, labelText) {
     return container;
 }
 
-function CreateOpeningHour() {
-
+function CreateOpeningHour(dayStr, startHour, endHour, closed) {
+    let day = document.createElement("h4");
+    day.textContent = dayStr + ": ";
+    let hours = document.createElement("span");
+    if (closed) {
+        hours.textContent = "CLOSED";
+    } else {
+        hours.textContent = startHour + ":00 - " + endHour + ":00";
+    }
+    day.appendChild(hours);
+    return day;
 }
