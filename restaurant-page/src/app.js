@@ -11,7 +11,6 @@ const homeButton = document.querySelector("#home");
 const menuButton = document.querySelector("#menu");
 const contactButton = document.querySelector("#contact");
 
-loadHomepage();
 
 homeButton.addEventListener("click", function () {
     setSelected(this);
