@@ -41,7 +41,7 @@ export function SetWarnings() {
     }
     if (lowCount > 0) {
         Elements.lowWarning.classList.add("not-visible");
-    } else if (lowCount > 0) {
+    } else if (lowCount === 0) {
         Elements.lowWarning.classList.remove("not-visible");
     }
 }

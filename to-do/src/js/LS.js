@@ -60,11 +60,11 @@ export function GetCount(priority) {
         if (tempArr[i].priority === priority) {
             if (tempArr[i].priority === "high") high++;
             if (tempArr[i].priority === "medium") medium++;
-            if (tempArr[i].priority === "lows") low++;
+            if (tempArr[i].priority === "low") low++;
 
         }
     }
     if (priority === "high") return high;
-    if (priority === "medium") return medium++;
-    if (priority === "low") return low++;
+    if (priority === "medium") return medium;
+    if (priority === "low") return low;
 }
