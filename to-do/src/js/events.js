@@ -1,90 +1,138 @@
 import { Modal } from "./modals";
 import { Element } from "./elements";
 import { LS } from "./LS";
+import { highCount, mediumCount, lowCount, SetCounts, SetWarnings } from "./app";
 
 const Elements = new Element();
 const Modals = new Modal();
 const Storage = new LS();
 
+export let priority = "high";
 
 export class Event {
+
     constructor() {
-        /*
-        //Project Add Modal
-        Elements.addProject_button.addEventListener("click", () => {
-            Modals.CreateModal("add-project")
-            Elements.Load("project-add");
-            Elements.projectAdd.background.addEventListener("click", () => { Modals.DeleteModal() });
-            Elements.projectAdd.close.addEventListener("click", () => { Modals.DeleteModal() });
-            Elements.projectAdd.add.addEventListener("click", () => {
-                Elements.Load("project-add");
-                this.AddProject(Elements.projectAdd.inputValue, 1, Elements.projectAdd.priorityValue);
-                Storage.Save(Elements.projectAdd.inputValue, Elements.projectAdd.priorityValue, 1, "project", Elements.projectAdd.inputValue);
-                Modals.DeleteModal();
-            })
-        });
+        Elements.highPriorityBar.addEventListener("click", () => {
+            Elements.projectName.textContent = "High Priority";
+            priority = "high";
+            Elements.listAll.forEach(li => li.classList.remove("selected"));
+            Elements.highPriorityBar.classList.add("selected");
+
+            if (Elements.highContent.classList.contains("not-visible")) {
+                Elements.highContent.classList.remove("not-visible");
+            }
 
 
-        //Project Remove Modal
-        Elements.deleteProject_button.addEventListener("click", () => {
-            Modals.CreateModal("remove-project");
-            Elements.Load("project-remove");
-            Elements.projectRemove.background.addEventListener("click", () => { Modals.DeleteModal() });
-            Elements.projectRemove.close.addEventListener("click", () => { Modals.DeleteModal() });
-        });
-        */
-        //Project Item Add Modal
+            Elements.mediumContent.classList.add("not-visible");
+            Elements.lowContent.classList.add("not-visible");
+
+        })
+
+        Elements.mediumPriorityBar.addEventListener("click", () => {
+            Elements.projectName.textContent = "Medium Priority";
+            priority = "medium";
+            Elements.listAll.forEach(li => li.classList.remove("selected"));
+            Elements.mediumPriorityBar.classList.add("selected");
+
+            if (Elements.mediumContent.classList.contains("not-visible")) {
+                Elements.mediumContent.classList.remove("not-visible");
+            }
+
+
+            Elements.highContent.classList.add("not-visible");
+            Elements.lowContent.classList.add("not-visible");
+
+        })
+
+        Elements.lowPriorityBar.addEventListener("click", () => {
+            Elements.projectName.textContent = "Low Priority";
+            priority = "low";
+            Elements.listAll.forEach(li => li.classList.remove("selected"));
+            Elements.lowPriorityBar.classList.add("selected");
+
+            if (Elements.lowContent.classList.contains("not-visible")) {
+                Elements.lowContent.classList.remove("not-visible");
+            }
+
+            Elements.highContent.classList.add("not-visible");
+            Elements.mediumContent.classList.add("not-visible");
+
+        })
+
         Elements.addTodo_button.addEventListener("click", () => {
             Modals.CreateModal("add-item")
-            Elements.Load("todo-add");
+            Elements.Load("add");
             Elements.projectTodoAdd.background.addEventListener("click", () => { Modals.DeleteModal() });
             Elements.projectTodoAdd.close.addEventListener("click", () => { Modals.DeleteModal() });
             Elements.projectTodoAdd.add.addEventListener("click", () => {
-                Elements.Load("todo-add");
-                this.AddTODO(Elements.projectTodoAdd.inputValue, 1, Elements.projectTodoAdd.priorityValue);
-                Storage.Save(Elements.projectTodoAdd.inputValue, Elements.projectTodoAdd.priorityValue, 1, "todo", "Project 1");
-                if (Elements.warningText) Elements.warningText.remove();
-                Modals.DeleteModal();
+                Elements.Load("add");
+                if (Elements.projectTodoAdd.inputValue !== "") {
+                    if (priority === "high") {
+                        Storage.Save(highCount, Elements.projectTodoAdd.inputValue, priority);
+                        this.AddTODO(highCount, Elements.projectTodoAdd.inputValue, priority);
+                    }
+                    if (priority === "medium") {
+                        SetWarnings();
+                        Storage.Save(mediumCount, Elements.projectTodoAdd.inputValue, priority);
+                        this.AddTODO(mediumCount, Elements.projectTodoAdd.inputValue, priority);
+                    }
+                    if (priority === "low") {
+                        SetWarnings();
+                        Storage.Save(lowCount, Elements.projectTodoAdd.inputValue, priority);
+                        this.AddTODO(lowCount, Elements.projectTodoAdd.inputValue, priority);
+                    }
+                    SetCounts();
+                    SetWarnings();
+                    if (Elements.warningText) Elements.warningText.remove();
+                    Modals.DeleteModal();
+                }
             })
         });
-        /*
-        //Project Settings Modal
-        Elements.settingsProject_button.addEventListener("click", () => {
-            Modals.CreateModal("settings");
-            Elements.Load("settings");
-            Elements.projectSettings.background.addEventListener("click", () => { Modals.DeleteModal() });
-            Elements.projectSettings.close.addEventListener("click", () => { Modals.DeleteModal() });
-        });*/
     }
 
-    AddTODO(name, id, priority) {
+    AddTODO(id, name, priority) {
         let todo = document.createElement("div");
+        let escapedName = name.replace(/[^A-Za-z0-9]/g, "");
         todo.classList.add("to-do-item");
         todo.classList.add(`${priority}`);
-        todo.setAttribute("id", `${id}`);
+        todo.classList.add(`id-${id}-${priority}-${escapedName}`);
         todo.innerHTML =
             `
         <div class="title">
             <div class="heading">${name}</div>
-                <div class="options">
-                    <div class="show-info">More</div>
-                    <div class="remove">Remove</div>
-                </div>
+            <div class="options">
+                <div class="rename">Rename</div>
+                <div class="remove">Remove</div>
             </div>
-            <div class="right-side">
-            <input type="checkbox" class="set-done-button">
         </div>
         `
-        Elements.content.appendChild(todo);
-    }
 
-    AddProject(name, id, priority) {
-        let project = document.createElement("li");
-        project.classList.add("project-item");
-        project.classList.add(`${priority}`);
-        project.setAttribute("id", `${id}`);
-        project.innerHTML = `<span class="project-name">${name}</span>`
-        Elements.projects.appendChild(project);
+        if (priority === "high") Elements.highContent.appendChild(todo);
+        else if (priority === "medium") Elements.mediumContent.appendChild(todo);
+        else if (priority === "low") Elements.lowContent.appendChild(todo);
+
+        document.querySelector(`.id-${id}-${priority}-${escapedName} .rename `).addEventListener("click", () => {
+            Modals.CreateModal("rename", name.split(" ").join("-"));
+            Elements.Load("rename");
+            Elements.projectRename.background.addEventListener("click", () => { Modals.DeleteModal() });
+            Elements.projectRename.close.addEventListener("click", () => { Modals.DeleteModal() });
+            Elements.projectRename.rename.addEventListener("click", () => {
+                Elements.Load("rename");
+                if (Elements.projectRename.inputValue !== "") {
+                    document.querySelector(`.id-${id}-${priority}-${escapedName} .heading`).textContent = Elements.projectRename.inputValue;
+                    Storage.Rename(id, name, priority, Elements.projectRename.inputValue);
+                    Modals.DeleteModal();
+                }
+            })
+        });
+
+        document.querySelector(`.id-${id}-${priority}-${escapedName} .remove`).addEventListener("click", () => {
+            document.querySelector(`.id-${id}-${priority}-${escapedName}`).remove();
+            Storage.Remove(id, name, priority);
+            SetCounts();
+            SetWarnings();
+        });
+
     }
 }
 
