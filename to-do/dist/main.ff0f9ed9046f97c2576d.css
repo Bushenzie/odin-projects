@@ -77,17 +77,29 @@ body {
     line-height: 2.3;
 }
 
-.project-item {
+.sidebar .projects li {
     border-radius: 2rem;
     background-color: #DDD;
     cursor: pointer;
     display: flex;
     padding: 0 2rem;
     justify-content: space-between;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     text-transform: capitalize;
     font-size: 1.4rem;
+}
+
+.project-item .project-name {
+
+    width: 85%;
+}
+
+.project-item .count {
+    display: flex;
+    justify-content: center;
+    width: 15%;
 }
 
 .project-item:hover,

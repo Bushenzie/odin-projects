@@ -13,6 +13,11 @@ export let highCount = GetCount("high");
 export let mediumCount = GetCount("medium");
 export let lowCount = GetCount("low");
 
+
+Elements.hCount.textContent = highCount;
+Elements.mCount.textContent = mediumCount;
+Elements.lCount.textContent = lowCount;
+
 SetWarnings()
 
 window.addEventListener("load", () => {
@@ -41,9 +46,14 @@ export function SetWarnings() {
 }
 
 export function SetCounts() {
+
     highCount = GetCount("high");
     mediumCount = GetCount("medium");
     lowCount = GetCount("low");
+
+    Elements.hCount.textContent = highCount;
+    Elements.mCount.textContent = mediumCount;
+    Elements.lCount.textContent = lowCount;
 }
 
 

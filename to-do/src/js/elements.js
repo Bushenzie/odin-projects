@@ -20,11 +20,16 @@ export function Element() {
     //MODALS
     this.modals = document.querySelector(".modals");
 
-    //Warnings
+    //WARNINGS
     this.highWarning = document.querySelector(".mainWindow > .content > .high-priority > p.warning");
     this.mediumWarning = document.querySelector(".mainWindow > .content > .medium-priority > p.warning");
     this.lowWarning = document.querySelector(".mainWindow > .content > .low-priority > p.warning");
 
+
+    //COUNTS 
+    this.hCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .hCount");
+    this.mCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .mCount");
+    this.lCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .lCount");
 }
 
 
