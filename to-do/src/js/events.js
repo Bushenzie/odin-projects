@@ -8,6 +8,7 @@ const Modals = new Modal();
 const Storage = new LS();
 
 export let priority = "high";
+let clicked = false;
 
 export class Event {
 
@@ -88,6 +89,18 @@ export class Event {
                 }
             })
         });
+
+        Elements.hamburger.addEventListener("click", () => {
+            if (!clicked) {
+                Elements.projects.style.display = "block";
+                Elements.sidebar.style.height = "27.5%";
+                clicked = true;
+            } else {
+                Elements.projects.style.display = "none";
+                Elements.sidebar.style.height = "5%";
+                clicked = false;
+            }
+        })
     }
 
     AddTODO(id, name, priority) {

@@ -20,6 +20,7 @@ Elements.lCount.textContent = lowCount;
 
 SetWarnings()
 
+
 window.addEventListener("load", () => {
     Storage.LoadALLTODOs("high");
     Storage.LoadALLTODOs("medium");

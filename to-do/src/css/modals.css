@@ -28,8 +28,7 @@
 
 .modal .window {
     border-radius: 3rem;
-    width: 30%;
-    height: 25%;
+    padding: 1.5rem 2rem;
     background-color: #FFF;
 }
 

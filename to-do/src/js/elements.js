@@ -2,6 +2,8 @@
 
 export function Element() {
     //SIDEBAR
+    this.projects = document.querySelector(".sidebar > .projects");
+    this.sidebar = document.querySelector(".sidebar");
     this.listAll = document.querySelectorAll(".sidebar > .projects > ul > li");
     this.highPriorityBar = document.querySelector(".sidebar > .projects > ul > .project-item.high");
     this.mediumPriorityBar = document.querySelector(".sidebar > .projects > ul > .project-item.medium");
@@ -30,6 +32,9 @@ export function Element() {
     this.hCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .hCount");
     this.mCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .mCount");
     this.lCount = document.querySelector(".sidebar > .projects > ul > li.project-item > .lCount");
+
+    //RESPONSIVENESS
+    this.hamburger = document.querySelector(".sidebar > .head > .project-ham");
 }
 
 
