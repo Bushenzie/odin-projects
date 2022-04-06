@@ -272,22 +272,9 @@ li.selected {
     }
 
     .sidebar {
-        position: absolute;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        top: 2%;
-        height: 5%;
-        right: 5%;
-        left: 5%;
-    }
-
-    .sidebar .projects {
         display: none;
     }
 
-    .sidebar .project-ham {
-        display: block;
-    }
 
 }
 /*BASE*/

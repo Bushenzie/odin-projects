@@ -105,7 +105,7 @@ export class Event {
 
     AddTODO(id, name, priority) {
         let todo = document.createElement("div");
-        let escapedName = name.replace(/[^A-Za-z0-9]/g, "");
+        let escapedName = name.replace(/"|\(|\)|;/g, "").split(" ").join("-");
         todo.classList.add("to-do-item");
         todo.classList.add(`${priority}`);
         todo.classList.add(`id-${id}-${priority}-${escapedName}`);
