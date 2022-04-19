@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <script src="https://kit.fontawesome.com/ee69f69477.js" crossorigin="anonymous"></script>
+    <script src="./script.js" defer></script>
+    <title>Weather Application</title>
+</head>
+<body>
+    <div class="heading">
+        <img src="./imgs/cloud.png" alt="">
+        <h1>Weather Application</h1>
+    </div>
+    <div class="input-area">
+        <div class="inputs">
+            <input type="text" class="city_pick_input" placeholder="Enter a city">
+            <button class="city_pick_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        
+        <div class="unit_selection">
+            <div class="item">
+                <input type="checkbox" name="metric" id="metric" value="metric" checked>
+                <label for="metric">Metric</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" name="imperial" id="imperial" value="imperial">
+                <label for="imperial">Imperial</label>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="info-area">
+        <div class="info_status">
+            
+        </div>
+        <h1 class="info_city"></h1>
+        <div class="tempature">
+            <h2 class="info_temp"></h2>
+            <h2 class="info_feels"></h2>
+        </div>
+    </div>
+</body>
+</html>

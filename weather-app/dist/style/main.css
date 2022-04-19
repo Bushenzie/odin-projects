@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  height: 80vh;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#EEE), color-stop(#00aeff), to(#005f8b));
+  background-image: linear-gradient(0deg, #EEE, #00aeff, #005f8b);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Lato', sans-serif;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 2fr 2fr;
+  -ms-grid-columns: 1fr;
+      grid-template: 1fr 2fr 2fr / 1fr;
+}
+
+body h1, body h2, body h3, body h4, body p {
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.heading h1 {
+  position: relative;
+  color: #FFF;
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 0 #000;
+  font-weight: 700;
+}
+
+.heading img {
+  position: fixed;
+}
+
+.input-area {
+  z-index: 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input-area .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.input-area .inputs .city_pick_input {
+  padding: .7rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.input-area .inputs .city_pick_input:focus {
+  border: none;
+  outline: none;
+  background-color: #CCC;
+}
+
+.input-area .inputs .city_pick_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.input-area .inputs .city_pick_button i {
+  color: #FFF;
+  font-size: 1.75rem;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+.input-area .inputs .city_pick_button i:hover {
+  color: #EEE;
+}
+
+.input-area .unit_selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.input-area .unit_selection .item {
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3%;
+}
+
+.input-area .unit_selection input {
+  -webkit-transform: scale(1.6);
+          transform: scale(1.6);
+}
+
+.input-area .unit_selection input,
+.input-area .unit_selection label {
+  cursor: pointer;
+}
+
+.input-area .unit_selection label {
+  font-size: 1.5rem;
+  color: #FFF;
+}
+
+.info-area {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #FFF;
+  padding: 7.5%;
+}
+
+.info-area .info_status {
+  font-size: 1.5rem;
+}
+
+.info-area .info_city {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.info-area .tempature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2rem;
+  position: relative;
+}
+
+.info-area .tempature h2 {
+  font-weight: 300;
+}
+
+.info-area .tempature .info_feels {
+  font-style: italic;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150%;
+  position: absolute;
+  left: 1rem;
+  bottom: 2rem;
+  font-size: 2rem;
+}
+
+.info-area .tempature .info_feels::before {
+  content: "Feels like:";
+  position: relative;
+  top: .2rem;
+  font-size: 1rem;
+}
+/*# sourceMappingURL=main.css.map */
