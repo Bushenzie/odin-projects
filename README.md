@@ -1,7 +1,7 @@
 # Odin Projects
 
 This repo is for projects from The Odin Project which teaches Front-end & Full-stack development
-All projects can be easily viewed from light menu [here](https://www.bushenzie.github.io/odin-projects)
+All projects can be easily viewed from light menu [here](https://bushenzie.github.io/odin-projects/)
 
 **NOTE**
 All projects are made just to train and are not meant to be viewed as fully functional projects.
